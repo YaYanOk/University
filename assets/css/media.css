@@ -3,3 +3,130 @@
     width: 90%;
   }
 }
+@media screen and (max-width: 1920px) {
+  .rightHeader{
+    margin-left: 300px;
+  }
+}
+/*Header 1440*/
+
+@media screen and (max-width: 1440px) {
+  nav{
+    width: 910px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .icons{
+    width: 130px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .ml-5{
+    margin-left: 20px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .wrapperHead .leftHeader .menu li {
+    margin: 0 10px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .wrapperHead .leftHeader .menu{
+    justify-content: start;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .leftHeader{
+    width: 1040px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .wrapperHead .rightHeader .lang{
+    margin-left: 0;
+  }
+}
+
+/*Header 1280*/
+@media screen and (max-width: 1440px) {
+  nav{
+    width: 850px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .container {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .wrapperHead .leftHeader .menu{
+    padding-left: 15px;
+  }
+}
+
+/*Header 1024*/
+
+
+@media screen and (max-width: 1024px) {
+  .wrapperHead .leftHeader .menu{
+    padding-left: 0px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .wrapperHead .leftHeader .menu li {
+    margin: 0 5px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .wrapperHead .leftHeader .menu li a {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  nav{
+    width: 650px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .logoImg{
+    width: 79px;
+  }
+}
+
+/*Header 768*/
+
+@media screen and (max-width: 768px) {
+  nav{
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wrapperHead .rightHeader {
+    margin-left: 70px;
+  }
+}
+
+/*Header 414*/
+
+@media screen and (max-width: 414px) {
+  .wrapperHead .rightHeader {
+    margin-left: 20px;
+  }
+}
+
+/*Header 320*/
+
+@media screen and (max-width: 320px) {
+  .wrapperHead .rightHeader {
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .logoImg{
+    width: 60px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .ml-5{
+    margin-left: 0px;
+  }
+}
