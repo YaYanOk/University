@@ -23,9 +23,9 @@ $(document).ready(function () {
     $(this.rel).fadeIn(500).addClass("tab_content_active");
   });
 
-  $("#birthDay .up").on('click', function(e) {
+  $("#birthDay .up").on("click", function (e) {
     e.preventDefault();
-    $('html, body').animate({scrollTop:0}, '400');
+    $("html, body").animate({ scrollTop: 0 }, "400");
   });
 
   // Sliders
@@ -33,10 +33,11 @@ $(document).ready(function () {
   // 1
   $("#slider1").owlCarousel({
     loop: true,
-    margin: 10,
+    margin: 24,
     nav: false,
     responsiveClass: true,
     items: 1,
+    lazyLoad: true
   });
 
   // 2
@@ -44,32 +45,86 @@ $(document).ready(function () {
   $("#slider2").owlCarousel({
     loop: true,
     margin: 24,
-    navText: [],
     nav: true,
+    dots: false,
     responsiveClass: true,
-    items: 9,
+    /* items: 9, */
+    lazyLoad: true,
+    responsive: {
+      1920: {
+        items: 9,
+      },
+      1440: {
+        items: 6,
+      },
+      768: {
+        items: 5,
+      },
+      410: {
+        items: 3,
+      },
+      320: {
+        items: 2, 
+      },
+      0: {
+        items: 1,
+      }
+    }
   });
 
   // news
+
+  var owl2 = $("#news .sliderNewsMain");
+  owl2.owlCarousel({
+    loop: true,
+    margin: 25,
+    dots: false,
+    responsiveClass: true,
+    items: 1,
+    lazyLoad: true
+  });
+
+  $(".customNextBtn").click(function () {
+    owl2.trigger("next.owl.carousel");
+  });
+  $(".customPrevBtn").click(function () {
+    owl2.trigger("prev.owl.carousel", [300]);
+  });
 
   $(".sliderNews").owlCarousel({
     loop: true,
     margin: 25,
     nav: true,
-    dots: false,
+    dots:false,
     responsiveClass: true,
-    items: 4,
+    responsive: {
+      1920: {
+        items: 4,
+      },
+      768: {
+        items: 3,
+      },
+      0: {
+        items: 2,
+      }
+    }
   });
 
   // events
 
-  $(".sliderEvents").owlCarousel({
+  $("#events .owl-carousel").owlCarousel({
     loop: true,
     margin: 24,
     nav: true,
-    dots: false,
     responsiveClass: true,
-    items: 3,
+    responsive: {
+      768: {
+        items: 3,
+      },
+      0: {
+        items: 2,
+      }
+    }
   });
 
   var scrollPos = 3000;
@@ -77,24 +132,20 @@ $(document).ready(function () {
     var st = $(this).scrollTop();
     if (st > scrollPos) {
       $(".slider1Big .owl-stage").css("transform", function () {
-        let newStr = "translate3d(-" + scrollPos / 5 + "px , 0px, 0px)";
-        console.log(newStr);
+        let newStr = "translate3d(-" + scrollPos / 4 + "px , 0px, 0px)";
         return newStr;
       });
       $(".slider2Big .owl-stage").css("transform", function () {
-        let newStr = "translate3d(" + (scrollPos / 5 - 900) + "px , 0px, 0px)";
-        console.log(newStr);
+        let newStr = "translate3d(" + (scrollPos / 4 - 1200) + "px , 0px, 0px)";
         return newStr;
       });
     } else {
       $(".slider1Big .owl-stage").css("transform", function () {
-        let newStr = "translate3d(-" + scrollPos / 5 + "px , 0px, 0px)";
-        console.log(newStr);
+        let newStr = "translate3d(-" + scrollPos / 4 + "px , 0px, 0px)";
         return newStr;
       });
       $(".slider2Big .owl-stage").css("transform", function () {
-        let newStr = "translate3d(" + (scrollPos / 5 - 900) + "px , 0px, 0px)";
-        console.log(newStr);
+        let newStr = "translate3d(" + (scrollPos / 4 - 1200) + "px , 0px, 0px)";
         return newStr;
       });
     }
@@ -103,23 +154,22 @@ $(document).ready(function () {
 
   // big
 
-  $(".slider2Big").owlCarousel({
+  $("#bigSlider .owl-carousel").owlCarousel({
     loop: true,
     margin: 24,
     nav: false,
     dots: false,
     responsiveClass: true,
-    items: 4,
+    responsive: {
+      768: {
+        items: 3,
+      },
+      0: {
+        items: 2,
+      }
+    }
   });
 
-  $(".slider1Big").owlCarousel({
-    loop: true,
-    margin: 24,
-    nav: false,
-    dots: false,
-    responsiveClass: true,
-    items: 4,
-  });
 
   $("#bigSlider .item").hover(
     function () {
@@ -136,8 +186,25 @@ $(document).ready(function () {
     loop: true,
     margin: 81,
     nav: true,
+    dots: false,
     responsiveClass: true,
-    items: 6,
+    responsive: {
+      1920: {
+        items: 5,
+      },
+      1280: {
+        items: 4,
+      },
+      1000: {
+        items: 3,
+      },
+      768: {
+        items: 2,
+      },
+      0: {
+        items: 1,
+      },
+    },
   });
 
   // footer
@@ -147,7 +214,21 @@ $(document).ready(function () {
     margin: -50,
     navText: [],
     nav: true,
+    dots: false,
     responsiveClass: true,
-    items: 4,
+    responsive: {
+      1920: {
+        items: 4,
+      },
+      1000: {
+        items: 3,
+      },
+      768: {
+        items: 2,
+      },
+      0: {
+        items: 1,
+      },
+    },
   });
 });
