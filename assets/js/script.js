@@ -1,4 +1,27 @@
 $(document).ready(function () {
+
+  /* setTimeout(function () {
+    $(".slider1Big").removeClass("owl-loaded");
+    $(".slider2Big").removeClass("owl-loaded");
+  }, 500);
+
+  setTimeout(function () {
+    $(".slider1Big").addClass("owl-loaded");
+    $(".slider2Big").addClass("owl-loaded");
+  }, 2000); */
+  
+  $(".owl-prev, .next").on( "click", function() {
+    console.log(1);
+    $(".owl-next, .next").removeClass("newNext");
+    $(this).addClass("newPrev");
+  });
+
+  $(".owl-next, .splide__arrow").on( "click", function() {
+    $(".owl-prev, .prev").removeClass("newPrev");
+    $(this).addClass("newNext");
+  });
+
+  // header mobile burg
   const menuBtn = document.querySelector(".menu-btn");
   let menuOpen = false;
   menuBtn.addEventListener("click", () => {
@@ -11,7 +34,43 @@ $(document).ready(function () {
     }
   });
 
-  const menuBtnBurger = document.querySelector(".menu-btn__burger");
+  menuBtn.onclick = function () {
+    $(".wrapperHead .headerDopDownNav").toggle(".showBlock");
+  }
+
+  // header desktop burg
+  const menuBtnDesk = document.querySelector(".menu-desktop-btn");
+  let menuOpenDesk = false;
+  menuBtnDesk.addEventListener("click", () => {
+    if (!menuOpenDesk) {
+      menuBtnDesk.classList.add("open");
+      menuOpenDesk = true;
+    } else {
+      menuBtnDesk.classList.remove("open");
+      menuOpenDesk = false;
+    }
+  });
+
+  menuBtnDesk.onclick = function () {
+    $(".deskMenu").toggle(".showBlock");
+  }
+
+  // news burg
+  const menuBtnNews = document.querySelector(".btn-menu-news");
+  let menuOpenNews = false;
+  menuBtnNews.addEventListener("click", () => {
+    if (!menuOpenNews) {
+      menuBtnNews.classList.add("open");
+      menuOpenNews = true;
+    } else {
+      menuBtnNews.classList.remove("open");
+      menuOpenNews = false;
+    }
+  });
+
+  menuBtnNews.onclick = function () {
+    $("#news .newsBlock").toggle(".showBlock");
+  }
 
   $(".tabs li a").click(function () {
     $(".tabs li a").removeClass("active");
@@ -42,35 +101,37 @@ $(document).ready(function () {
 
   // 2
 
-  $("#slider2").owlCarousel({
-    loop: true,
-    margin: 24,
-    nav: true,
-    dots: false,
-    responsiveClass: true,
-    /* items: 9, */
-    lazyLoad: true,
-    responsive: {
-      1920: {
-        items: 9,
+  new Splide( '.slider2Screen1 .splide', {
+    type   : 'loop',
+    arrowPath: '',
+    perPage: 9,
+    classes: {
+      arrows: 'prettyArrow buttonsSlider2',
+      prev  : 'prev',
+      next  : 'next',
+    },
+    pagination: false,
+    breakpoints: {
+      320: {
+        perPage: 2,
       },
-      1440: {
-        items: 6,
+      375: {
+        perPage: 2,
+      },
+      425: {
+        perPage: 2,
       },
       768: {
-        items: 5,
+        perPage: 3,
       },
-      410: {
-        items: 3,
+      1000: {
+        perPage: 5,
       },
-      320: {
-        items: 2, 
-      },
-      0: {
-        items: 1,
+      1440: {
+        perPage: 6,
       }
-    }
-  });
+    },
+  }).mount();
 
   // news
 
@@ -112,20 +173,25 @@ $(document).ready(function () {
 
   // events
 
-  $("#events .owl-carousel").owlCarousel({
-    loop: true,
-    margin: 24,
-    nav: true,
-    responsiveClass: true,
-    responsive: {
+  new Splide( '.sliderEvents .splide', {
+    type   : 'loop',
+    arrowPath: '',
+    perPage: 3,
+    classes: {
+      arrows: 'prettyArrow buttonsSliderEvents',
+      prev  : 'prev',
+      next  : 'next',
+    },
+    pagination: false,
+    breakpoints: {
       768: {
-        items: 3,
+        perPage: 2,
       },
-      0: {
-        items: 2,
+      320: {
+        perPage: 1,
       }
-    }
-  });
+    },
+  }).mount();
 
   var scrollPos = 3000;
   $(window).scroll(function () {
@@ -155,57 +221,70 @@ $(document).ready(function () {
   // big
 
   $("#bigSlider .owl-carousel").owlCarousel({
+    responsive: {
+      768: {
+        items: 3,
+      },
+      425: {
+        items: 2,
+      },
+      375: {
+        items: 1,
+      },
+    },
     loop: true,
     margin: 24,
     nav: false,
     dots: false,
-    responsiveClass: true,
-    responsive: {
-      768: {
-        items: 3,
-      },
-      0: {
-        items: 2,
-      }
-    }
+/*     touchDrag: false,
+    mouseDrag: false, */
+    responsiveClass: false,
   });
 
 
-  $("#bigSlider .item").hover(
+  $("#bigSlider .owl-item ").hover(
     function () {
-      $(this).find(".offer").fadeIn(100).css("display", "flex");
+      $(this).removeClass("cloned");
+      $(this).addClass("active");
+      $(this).find(".offer").addClass("showBlock");
     },
     function () {
-      $(this).find(".offer").fadeOut(100).css("display", "none");
+      $(this).find(".offer").removeClass("showBlock");
+      $(this).addClass("cloned");
+      $(this).removeClass("active");
     }
   );
 
+  /* $("#bigSlider .owl-item").mouseover(function() {
+    $(this).find(".offer").addClass("showBlock");
+  }).mouseout(function() {
+      $(this).find(".offer").removeClass("showBlock");
+  }); */
+
   // happy birthday
 
-  $("#hb").owlCarousel({
-    loop: true,
-    margin: 81,
-    nav: true,
-    dots: false,
-    responsiveClass: true,
-    responsive: {
-      1920: {
-        items: 5,
-      },
+  new Splide( '.sliderHB .splide', {
+    type   : 'loop',
+    arrowPath: '',
+    perPage: 5,
+    classes: {
+      arrows: 'prettyArrow buttonsSliderHB',
+      prev  : 'prev',
+      next  : 'next',
+    },
+    pagination: false,
+    breakpoints: {
       1280: {
-        items: 4,
+        perPage: 3,
       },
       1000: {
-        items: 3,
+        perPage: 2,
       },
-      768: {
-        items: 2,
-      },
-      0: {
-        items: 1,
+      767: {
+        perPage: 1,
       },
     },
-  });
+  }).mount();
 
   // footer
 

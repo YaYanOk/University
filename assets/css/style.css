@@ -14,6 +14,50 @@ body {
 
 /* *** HEADER *** */
 
+.deskMenu {
+  position: absolute;
+  width: 100%;
+  padding: 85px 105px;
+  background: white;
+  display: none;
+  z-index: 10;
+}
+
+.deskMenu .rowBlock {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.deskMenu .rowBlock .menuColumn {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.deskMenu .rowBlock .menuColumn h5 {
+  font-size: 17px;
+  font-family: "Roboto";
+  margin-bottom: 16px;
+}
+
+.deskMenu .rowBlock .menuColumn .items {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.deskMenu .rowBlock .menuColumn .items li {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.deskMenu .rowBlock .menuColumn .items li a {
+  font-size: 17px;
+  color: #999999;
+  font-family: "Roboto";
+}
+
 header {
   padding-top: 25px;
 }
@@ -26,6 +70,7 @@ header {
 .wrapperHead .leftHeader {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .wrapperHead .leftHeader .menu {
@@ -55,7 +100,7 @@ header {
   width: 0;
 }
 
-a:after {
+header a:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -67,7 +112,8 @@ a:after {
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
-a:hover:after {
+
+header a:hover:after {
   width: 100%;
   left: 0;
 }
@@ -110,17 +156,24 @@ a:hover:after {
   outline: none;
 }
 
-.wrapperHead .rightHeader .lang p {
+.wrapperHead .rightHeader .lang {
   margin: 0;
   color: rgba(22, 22, 22, 1);
   font-size: 15px;
-  margin-left: 5px;
   text-decoration: underline;
+}
+
+.wrapperHead .rightHeader .lang img {
+  margin-right: 5px;
 }
 
 /* * BURGER * */
 
-.menu-btn {
+.wrapperHead .menu-btn {
+  display: none;
+}
+
+.burger {
   position: relative;
   display: flex;
   justify-content: center;
@@ -129,16 +182,17 @@ a:hover:after {
   height: 20px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  z-index: 1000;
 }
-.menu-btn__burger {
+.burger .menu-btn__burger {
   width: 22px;
   height: 3px;
   background-color: #060606;
   border-radius: 5px;
   transition: all 0.5s ease-in-out;
 }
-.menu-btn__burger::before,
-.menu-btn__burger::after {
+.burger .menu-btn__burger::before,
+.burger .menu-btn__burger::after {
   content: "";
   position: absolute;
   width: 22px;
@@ -147,22 +201,23 @@ a:hover:after {
   border-radius: 5px;
   transition: all 0.5s ease-in-out;
 }
-.menu-btn__burger::before {
+.burger .menu-btn__burger::before {
   transform: translateY(-7px);
 }
-.menu-btn__burger::after {
+.burger .menu-btn__burger::after {
   transform: translateY(7px);
 }
 
-.menu-btn.open .menu-btn__burger {
+.burger.open .menu-btn__burger {
   transform: translateX(-50px);
   background: transparent;
   box-shadow: none;
 }
-.menu-btn.open .menu-btn__burger::before {
+.burger.open .menu-btn__burger::before {
   transform: rotate(45deg) translate(35px, -35px);
 }
-.menu-btn.open .menu-btn__burger::after {
+
+.burger.open .menu-btn__burger::after {
   transform: rotate(-45deg) translate(35px, 35px);
 }
 
@@ -200,14 +255,19 @@ a:hover:after {
   background: #005fa1 !important;
 }
 
+.sliderScreen1 .item {
+  align-items: center;
+  display: flex;
+}
+
 .sliderScreen1 .item .offer {
   font-family: "Montserrat";
   position: absolute;
-  margin-top: 14%;
   margin-left: 7%;
 }
 
 .sliderScreen1 .item .offer h1 {
+  font-family: 'Roboto';
   font-weight: 900;
   max-width: 620px;
   font-size: 48px;
@@ -234,17 +294,50 @@ a:hover:after {
   border-radius: 30px;
   padding: 40px 30px;
   font-family: "Montserrat";
+  margin-right: 25px;
 }
 
-.slider2Screen1 {
+.slider2Screen1 .splide,
+.sliderEvents .splide,
+.sliderHB .splide {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.slider2Screen1 .owl-nav {
-  display: flex !important;
+.sliderHB .splide {
+  margin-top: 0;
+}
+
+.slider2Screen1 .buttonsSlider2 {
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 42px !important;
+  margin-top: 30px;
+}
+
+.sliderEvents .buttonsSliderEvents {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.splide__arrow svg {
+  display: none;
+}
+
+.splide__arrow {
+  position: relative;
+  z-index: 1;
+  transform: translateY(0);
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  opacity: 1;
+  background: #ccc;
 }
 
 .owl-nav .owl-next,
@@ -252,21 +345,52 @@ a:hover:after {
   outline: none;
 }
 
+.newNext {
+  width: 42px !important;
+  height: 37px !important;
+  background: url(../img/arrowRight.png) !important;
+  transform: rotate( 360deg ) !important;
+}
+
+.newPrev {
+  width: 42px !important;
+  height: 37px !important;
+  background: url(../img/arrowRight.png) !important;
+  transform: rotate(180deg) !important;
+}
+
+.next {
+  width: 30px;
+  height: 30px;
+  background: url(../img/arrowLeft.png);
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  transform: rotate(180deg);
+}
+
+.prev {
+  width: 30px;
+  height: 30px;
+  background: url(../img/arrowLeft.png);
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  margin-right: 29px;
+}
+
 .prettyArrow .owl-nav .owl-next,
 .prettyArrow .owl-nav .owl-prev {
-  width: 42px;
-  height: 37px;
-  background: url(../img/arrowRight.png) !important;
+  width: 30px;
+  height: 30px;
+  background: url(../img/arrowLeft.png) ;
   background-size: 100% !important;
   background-repeat: no-repeat !important;
 }
 
+.prettyArrow .owl-nav .owl-next {
+  transform: rotate(180deg);
+}
+
 .prettyArrow .owl-nav .owl-prev {
-  width: 30px;
-  height: 30px;
-  background: url(../img/arrowLeft.png) !important;
-  background-size: 100% !important;
-  background-repeat: no-repeat !important;
   margin-right: 29px;
 }
 
@@ -288,6 +412,7 @@ a:hover:after {
 }
 
 #news .leftBlock {
+  position: relative;
   max-width: 400px;
 }
 
@@ -302,34 +427,48 @@ a:hover:after {
   max-width: 400px;
 }
 
-#news .leftBlock .wrapper h2 {
+#news .leftBlock .wrapper h2, #news .newsBlock h2 {
   color: black;
   font-size: 30px;
 }
 
-#news .leftBlock .wrapper .oneNews {
+#news .newsBlock {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.966);
+  max-width: 300px;
+  left: 44px;
+  top: 14px;
+  border: 1px solid rgba(163, 163, 163, 0.144);
+  padding: 14px 14px 60px;
+  border-radius: 5px;
+}
+
+#news .leftBlock .wrapper .oneNews, #news .newsBlock .oneNews {
   border-top: 1px solid #e9e7e7;
   padding-top: 16px;
   margin-top: 20px;
 }
 
-#news .leftBlock .wrapper .oneNews a {
+#news .leftBlock .wrapper .oneNews a, #news .newsBlock .oneNews a {
   text-decoration: none;
 }
 
-#news .leftBlock .oneNews .text {
+#news .leftBlock .oneNews .text, #news .newsBlock .oneNews .text {
   font-size: 15px;
   color: #000000;
   font-weight: 500;
   font-family: "Roboto";
 }
 
-#news .leftBlock .oneNews .date {
+#news .leftBlock .oneNews .date, #news .newsBlock .oneNews .date {
   font-size: 13px;
   color: #918484;
 }
 
-#news .leftBlock .wrapper .btnNews {
+#news .leftBlock .wrapper .btnNews, #news .newsBlock .btnNews {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -341,13 +480,48 @@ a:hover:after {
   border: none;
 }
 
-#news .leftBlock .wrapper .btnNews:focus {
+#news .newsBlock .btnNews {
+  border-radius: 0px 0px 5px 5px;
+}
+
+#news .leftBlock .wrapper .btnNews:focus, #news .newsBlock .btnNews:focus {
   outline: none;
 }
 
 #news .leftBlock .newsCircle {
   margin-left: 172px;
   margin-top: 62px;
+  position: absolute;
+}
+
+.showBlock {
+  display: flex !important;
+}
+
+.headerDopDownNav {
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.212);
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1000;
+  top: 70px;
+  left: 30px;
+}
+
+.headerDopDownNav .menu {
+  flex-direction: column;
+  padding: 0;
+}
+
+.wrapperHead .headerDopDownNav .menu li a:after {
+  bottom: -4px;
+}
+
+.wrapperHead .headerDopDownNav .menu li {
+  margin-top: 5px !important;
 }
 
 .tab_content {
@@ -357,6 +531,20 @@ a:hover:after {
   display: block;
 }
 
+.wrapperButtons .active {
+  position: relative;
+}
+
+.wrapperButtons .active::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #005fa0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
 #news .rightBlock {
   padding-top: 47px;
 }
@@ -364,6 +552,16 @@ a:hover:after {
 #news .wrapperButtons {
   display: flex;
   justify-content: space-between;
+}
+
+#news .wrapperButtons .wrapperFirst {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+#news .wrapperButtons .wrapperFirst .btn-menu-news {
+  display: none;
 }
 
 #news .wrapperButtons .navsButtons .custom-owl-nav {
@@ -395,7 +593,6 @@ a:hover:after {
   font-family: "Roboto";
   font-weight: bold;
   padding-bottom: 12px;
-  border-bottom: 2px solid #005fa0;
 }
 
 #news .rightBlock .tab_content .mainBlock {
@@ -415,10 +612,6 @@ a:hover:after {
   align-items: center;
 }
 
-/* .sliderEvents  {
-  width: 1309px;
-} */
-
 #news .rightBlock .tab_content .mainBlock .left h1 {
   font-family: "Roboto";
   font-weight: 300;
@@ -433,7 +626,7 @@ a:hover:after {
   margin-top: 50px;
 }
 
-#news .rightBlock .tab_content #sliderNews2 {
+#news .rightBlock .tab_content .sliderNews2 {
   margin-top: 40px;
 }
 
@@ -500,8 +693,8 @@ a:hover:after {
 }
 
 #events .mainBlock .rightBlock .sliderEvents .yellowCard .date {
-  border-top: 16px solid #ecc951;
-  border-bottom: 16px solid #ecc951;
+  border-top-color: #ecc951;
+  border-bottom-color: #ecc951;
 }
 
 #events .mainBlock .rightBlock .sliderEvents .noBrownCard {
@@ -513,8 +706,8 @@ a:hover:after {
 }
 
 #events .mainBlock .rightBlock .sliderEvents .noBrownCard .date {
-  border-top: 16px solid #cb7755;
-  border-bottom: 16px solid #cb7755;
+  border-top-color: #cb7755;
+  border-bottom-color: #cb7755;
 }
 
 #events .mainBlock .rightBlock .sliderEvents .brownCard {
@@ -526,8 +719,13 @@ a:hover:after {
 }
 
 #events .mainBlock .rightBlock .sliderEvents .brownCard .date {
-  border-top: 16px solid #9d6447;
-  border-bottom: 16px solid #9d6447;
+  border-top-color: #9d6447;
+  border-bottom-color: #9d6447;
+}
+
+#events .mainBlock .rightBlock .sliderEvents .date {
+  border-top: 16px solid;
+  border-bottom: 16px solid;
 }
 
 #events .mainBlock .rightBlock .sliderEvents .card {
@@ -535,6 +733,7 @@ a:hover:after {
   border-radius: 5px;
   padding: 42px 0 80px;
   margin-bottom: 15px;
+  margin-right: 24px;
 }
 
 #events .mainBlock .rightBlock .sliderEvents .card .wrapperMain {
@@ -558,9 +757,9 @@ a:hover:after {
 
 #events .mainBlock .rightBlock .sliderEvents .card .date {
   top: 0;
-  right: 0;
+  right: -11px;
   position: absolute;
-  border-right: 12px solid white;
+  border-right: 12px solid transparent;
 }
 
 #events .mainBlock .rightBlock .sliderEvents .card .mainText {
@@ -584,18 +783,19 @@ a:hover:after {
 
 /* ** NUMBERS ** */
 
-#numbers {
+/* #numbers {
   margin: 80px 0;
-}
+} */
 
 #numbers h1 {
   display: flex;
   justify-content: center;
+  margin-bottom: 60px;
 }
 
 #numbers .mainBlock {
-  padding-top: 61px;
   background: url(../img/dgty.png) no-repeat;
+  background-position-y: 75px;
 }
 
 #numbers .wrapper {
@@ -686,10 +886,11 @@ a:hover:after {
 #bigSlider .item .offer {
   position: absolute;
   display: none;
-  bottom: 40px;
+  bottom: 30%;
   width: 100%;
   z-index: 100;
   justify-content: space-around;
+  padding: 0 20px;
   align-items: center;
 }
 
@@ -732,7 +933,7 @@ a:hover:after {
 
 #bigSlider .moreInfo button i {
   margin-left: 16px;
-} 
+}
 
 #bigSlider .rel {
   position: relative;
@@ -769,7 +970,7 @@ a:hover:after {
 #birthDay .circles .circle {
   width: 12px;
   height: 12px;
-  background: #AEAEAE;
+  background: #aeaeae;
   opacity: 0.3;
   border-radius: 50px;
   margin-right: 12px;
@@ -777,7 +978,7 @@ a:hover:after {
 
 #birthDay .sliderHB {
   margin-top: 56px;
-  background: #F7F7F7;
+  background: #f7f7f7;
   border-radius: 5px;
   margin-bottom: 16px;
   padding: 69px 62px;
@@ -789,10 +990,19 @@ a:hover:after {
   padding-bottom: 50px;
 }
 
-#birthDay .sliderHB .owl-nav {
+#birthDay .sliderHB .splide {
+  position: static;
+}
+
+#birthDay .sliderHB .item {
+  margin-right: 40px;
+}
+
+#birthDay .sliderHB .buttonsSliderHB {
   position: absolute;
   right: 0;
   bottom: 0;
+  display: flex;
 }
 
 #birthDay .sliderHB .item h6 {
@@ -815,17 +1025,19 @@ a:hover:after {
   justify-content: space-between;
 }
 
-#birthDay .recomBlock{
+#birthDay .recomBlock {
   display: flex;
   align-items: center;
   margin-top: 40px;
 }
-#birthDay .recomText{
+
+#birthDay .recomText {
   font-family: "Roboto";
   font-size: 20px;
   color: #000000;
   margin-left: 24px;
   margin-bottom: 0;
+  max-width: 260px;
 }
 
 #birthDay .buttonUp {
@@ -847,12 +1059,11 @@ a:hover:after {
   outline: none;
 }
 
-#birthDay .buttonUp button p {
+#birthDay .buttonUp button {
   font-family: "Roboto";
   font-weight: 500;
   font-size: 15px;
   color: #000000;
-  
 }
 
 /* ** FOOTER ** */
