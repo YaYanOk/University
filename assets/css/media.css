@@ -518,7 +518,9 @@
   #news .rightBlock .tabs {
     padding-left: 10px;
   }
-
+  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
+    margin-left: 0;
+  }
   footer .siteInfor {
     font-size: 12px;
     width: 88px;
