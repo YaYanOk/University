@@ -187,7 +187,7 @@ $(document).ready(function () {
       768: {
         perPage: 2,
       },
-      320: {
+      478: {
         perPage: 1,
       }
     },

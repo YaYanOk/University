@@ -140,6 +140,12 @@
     display: none;
   }
 
+  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
+    padding: 12px 20px;
+    width: 150px;
+    margin-left: -20px;
+  }
+
   .sliderScreen1 .item .offer h1 {
     font-size: 36px;
     max-width: 450px;
@@ -253,6 +259,12 @@
     display: none;
   }
 
+  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
+    padding: 12px 20px;
+    width: 150px;
+    margin-left: -20px;
+  }
+
   .sliderScreen1 .item .offer h1 {
     font-size: 24px;
     max-width: 300px;
@@ -364,6 +376,7 @@
   footer .footerSlider .item .wrapper img {
     width: 17%;
   }
+ 
 }
 
 @media screen and (max-width: 568px) {
@@ -385,11 +398,7 @@
     padding: 33px 25px 0;
   }
 
-  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
-    padding: 12px 20px;
-    width: 150px;
-    margin-left: -20px;
-  }
+  
 
   .sliderScreen1 .item .offer button {
     font-size: 12px;
@@ -427,6 +436,12 @@
   .sliderScreen1 .owl-dots {
     bottom: 6%;
     left: 10%;
+  }
+
+  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
+    padding: 12px 20px;
+    width: 150px;
+    margin-left: -20px;
   }
 
   .sliderScreen1 .item .offer h1 {
@@ -479,6 +494,11 @@
     font-size: 15px;
     width: 152px;
   }
+  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
+    padding: 12px 20px;
+    width: 150px;
+    margin-left: -20px;
+  }
 
   .sliderScreen1 .item .offer {
     display: flex;
@@ -528,5 +548,10 @@
 
   footer .social {
     left: 12%;
+  }
+  #events .mainBlock .rightBlock .sliderEvents .card .btnCard {
+    padding: 12px 20px;
+    width: 150px;
+    margin-left: -20px;
   }
 } 
